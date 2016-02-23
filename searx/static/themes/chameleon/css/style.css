@@ -188,32 +188,30 @@ select {
     color: #666666;
 }
 
-.categories {
-    padding: 0.5px;
-    text-align: center;
-}
-
 .categories-container {
-    display:inline-block;
-    padding: 0.5px;
+    text-align:center;
 }
 
 .checkbox-container {
     display:inline-block;
     position:relative;
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
+    padding-right: 0.3rem;
+    padding-left: 0.3rem;
 }
 
 .checkbox-container input[type="checkbox"] {
     display:none;
+}
+
+.checkbox-container input[type="checkbox"]+label {
+    background-color: transparent;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
 }
 
 .checkbox-container input[type="checkbox"]:checked+label {
     background-color: #3489db;
-    color: #eeeeee;
+    color: #ffffff;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
 }
@@ -408,4 +406,34 @@ select {
 
 #footer {
     padding-bottom:0;
+}
+
+.search-box {
+    float:left;
+    padding-right:3px;
+}
+
+.search-wrapper {
+    margin:0 auto;
+}
+
+.clear-search {
+    position:absolute;
+    padding:0.0rem;
+    width:3.0rem;
+    left:66.0rem;
+    background-color:transparent;
+    border-color:transparent;
+}
+
+.clear-search:hover {
+    background-color: transparent;
+    border-color:transparent;
+}
+
+.submit-search {
+    position:absolute;
+    padding:0.0rem;
+    width:9.0rem;
+    left:69.0rem;
 }
