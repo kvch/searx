@@ -1,0 +1,6 @@
+<div class="result">
+    <h3 class="result-title"><a href="{{ result.url }}" rel="noreferrer">{{ result.title|safe }}</a></h3>
+    {% if result.publishedDate %}<span class="published_date">{{ result.publishedDate }}</span><br />{% endif %}
+    <div class="video-thumb"><a href="{{ result.url }}" rel="noreferrer"><img class="thumbnail" src="{{ image_proxify(result.thumbnail) }}" title="{{ result.title|striptags }}" alt="{{ result.title|striptags }}"/></a></div>
+    <div class="result-engines">{% for engine in result.engines %} <span class="result-engine">{{ engine }}</span>{% endfor %}</div>
+</div>

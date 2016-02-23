@@ -1,0 +1,10 @@
+<div id="categories">
+    <div id="categories-container">
+        {% for category in categories %}
+        <div class="checkbox-container">
+             <input class="hidden" type="checkbox" id="checkbox_{{ category|replace(' ', '_') }}" name="category_{{ category }}" {% if category in selected_categories %}checked="checked"{% endif %} />
+             <label for="checkbox_{{ category|replace(' ', '_') }}" class="highlighted-box">{{ _(category) }}</label>
+        </div>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,99 @@
+{% extends "chameleon/base.html" %}
+{% block title %}{{ q }} - {% endblock %}
+{% block meta %}<link rel="alternate" type="application/rss+xml" title="Searx search: {{ q }}" href="{{ url_for('index') }}?q={{ q|urlencode }}&amp;format=rss&amp;{% for category in selected_categories %}category_{{ category }}=1&amp;{% endfor %}pageno={{ pageno }}">{% endblock %}
+{% block content %}
+<div class="small search center">
+    {% include 'chameleon/search.html' %}
+</div>
+<div id="results">
+    <div id="sidebar">
+        <div id="infobox">
+            {{ _('Search URL') }}
+            <input type="text" value="{{ base_url }}?q={{ q|urlencode }}{% if selected_categories %}&amp;categories={{ selected_categories|join(",") | replace(' ','+') }}{% endif %}{% if pageno > 1 %}&amp;pageno={{ pageno }}{% endif %}" readonly />
+        </div>
+
+        {% if answers %}
+        <div id="answers"><span>{{ _('Answers') }}</span>
+            {% for answer in answers %}
+            <span>{{ answer }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if suggestions %}
+        <div id="infobox">
+            <div id="suggestions-title">{{ _('Suggestions') }}</div>
+            {% set first = true %}
+            {% for suggestion in suggestions %}
+            <form class="suggestion-form" method="{{ method or 'POST' }}" action="{{ url_for('index') }}">
+                <input type="hidden" name="q" value="{{ suggestion }}">
+                <input type="submit" class="button-clear button-small" value="{{ suggestion }}" />
+            </form>
+            {% set first = false %}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if infoboxes %}
+        <div id="infobox">
+          {% for infobox in infoboxes %}
+             {% include 'chameleon/infobox.html' %}
+          {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+    {% for result in results %}
+        {% if result['template'] %}
+            {% include get_result_template('chameleon', result['template']) %}
+        {% else %}
+            {% include 'chameleon/result_templates/default.html' %}
+        {% endif %}
+    {% endfor %}
+
+    {% if paging %}
+    <div id="pagination">
+        {% if pageno > 1 %}
+            <form method="{{ method or 'POST' }}" action="{{ url_for('index') }}">
+                <div class="{% if rtl %}right{% else %}left{% endif %}">
+                <input type="hidden" name="q" value="{{ q }}" />
+                {% for category in selected_categories %}
+                <input type="hidden" name="category_{{ category }}" value="1"/>
+                {% endfor %}
+                <input type="hidden" name="pageno" value="{{ pageno-1 }}" />
+                <input type="submit" value="<< {{ _('previous page') }}" />
+                </div>
+            </form>
+        {% endif %}
+        <form method="{{ method or 'POST' }}" action="{{ url_for('index') }}">
+            <div class="{% if rtl %}left{% else %}right{% endif %}">
+                {% for category in selected_categories %}
+                <input type="hidden" name="category_{{ category }}" value="1"/>
+                {% endfor %}
+                <input type="hidden" name="q" value="{{ q }}" />
+                <input type="hidden" name="pageno" value="{{ pageno+1 }}" />
+                <input type="submit" value="{{ _('next page') }} >>" />
+            </div>
+        </form>
+
+        <br />
+    </div>
+    {% endif %}
+    <div id="apis">
+    {{ _('Download results') }}
+    {% for output_type in ('csv', 'json', 'rss') %}
+    <form method="{{ method or 'POST' }}" action="{{ url_for('index') }}">
+        <div class="left">
+        <input type="hidden" name="q" value="{{ q }}" />
+        <input type="hidden" name="format" value="{{ output_type }}" />
+        {% for category in selected_categories %}
+        <input type="hidden" name="category_{{ category }}" value="1"/>
+        {% endfor %}
+        <input type="hidden" name="pageno" value="{{ pageno }}" />
+        <input type="submit" value="{{ output_type }}" />
+        </div>
+    </form>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

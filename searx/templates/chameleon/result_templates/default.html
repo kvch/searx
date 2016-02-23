@@ -1,0 +1,7 @@
+<div class="result {{ result.class }}">
+    <h3 class="result-title"><a href="{{ result.url }}" rel="noreferrer">{{ result.title|safe }}</a></h3>
+    <p class="result-info">{{ result.pretty_url }}&lrm; | <a class="cache_link" href="https://web.archive.org/web/{{ result.url }}" rel="noreferrer">{{ _('cached') }}</a>
+    {% if result.publishedDate %}<span class="published_date">{{ result.publishedDate }}</span>{% endif %}</p>
+    <p class="result-text">{% if result.img_src %}<img src="{{ image_proxify(result.img_src) }}" class="image" />{% endif %}{% if result.content %}{{ result.content|safe }}<br class="last"/>{% endif %}</p>
+    <div class="result-engines">{% for engine in result.engines %} <span class="result-engine">{{ engine }}</span>{% endfor %}</div>
+</div>

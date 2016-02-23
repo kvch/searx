@@ -1,0 +1,13 @@
+<div class="image-result">
+    <a href="#openImageModal{{ image_proxify(result.url) }}"><img src="{% if result.thumbnail_src %}{{ image_proxify(result.thumbnail_src) }}{% else %}{{ image_proxify(result.img_src) }}{% endif %}" title="{{ result.title|striptags }}" alt="{{ result.title|striptags }}"/></a>
+
+    <div id="openImageModal{{ image_proxify(result.url) }}" class="modalImage">
+        <div>
+            <h5>{{ result.title|striptags }}</h5>
+            <a href="{{ image_proxify(result.img_src) }}" rel="noreferrer"><img src="{{ image_proxify(result.img_src) }}"/></a>
+            {% if result.content %}<p class="result-content">{{ result.content|safe }}</p>{% endif %}
+            <p><a href="{{ image_proxify(result.url) }}" rel="noreferrer"><button type="button" class="button">Visit page</button></a></p>
+            <div class="close"><a href="#close" class="close"></a></div>
+        </div>
+    </div>
+</div>

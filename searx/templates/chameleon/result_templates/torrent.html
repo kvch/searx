@@ -1,0 +1,11 @@
+<div class="result torrent_result">
+    <h5 class="result-title"><a href="{{ result.url }}" rel="noreferrer">{{ result.title|safe }}</a></h5>
+    <p class="result-info">{{ result.pretty_url }}&lrm;</p>
+    {% if result.content %}<p class="result-text">{{ result.content|safe }}</p>{% endif %}
+    <p class="result-text">
+        {% if result.magnetlink %}<a href="{{ result.magnetlink }}" class="magnetlink">{{ _('magnet link') }}</a> | {% endif %} 
+        {% if result.torrentfile %}<a href="{{ result.torrentfile }}" rel="noreferrer" class="torrentfile">{{ _('torrent file') }}</a> | {% endif %}
+        {{ _('Seeder') }}: {{ result.seed }}, {{ _('Leecher') }}: {{ result.leech }}
+        <div class="result-engines">{% for engine in result.engines %} <span class="result-engine">{{ engine }}</span>{% endfor %}</div>
+    </p>
+</div>
