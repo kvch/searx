@@ -1,42 +1,37 @@
 <div class="infobox">
-    <h4>{{ infobox.infobox }}</h4>
+    <div class="suggestions-title">{{ infobox.infobox }}</div>
     {% if infobox.img_src %}<img src="{{ image_proxify(infobox.img_src) }}" title="{{ infobox.infobox|striptags }}" alt="{{ infobox.infobox|striptags }}" />{% endif %}
     <p>{{ infobox.entity }}</p>
     <p>{{ infobox.content | safe }}</p>
     {% if infobox.attributes %}
-    <div class="attributes">
         <table>
             {% for attribute in infobox.attributes %}
             <tr><td>{{ attribute.label }}</td><td>{{ attribute.value }}</td></tr>
             {% endfor %}
         </table>
-    </div>
     {% endif %}
 
     {% if infobox.urls %}
-    <div>
-        <ul>
-            {% for url in infobox.urls %}
-            <li class="url"><a href="{{ url.url }}" rel="noreferrer">{{ url.title }}</a></li>
-            {% endfor %}
-        </ul>
-    </div>
-    {% endif %}
-
-    {% if infobox.relatedTopics %}
-    <div>
-        {% for topic in infobox.relatedTopics %}
-        <div>
-            <h6>{{ topic.name }}</h6>
-            {% for suggestion in topic.suggestions %}
-            <form class="suggestion-form" method="{{ method or 'POST' }}" action="{{ url_for('index') }}">
-                <input type="hidden" name="q" value="{{ suggestion }}">
-                <input type="submit" class="button button-outline button-outline-small" value="{{ suggestion }}" />
-            </form>
-            {% endfor %}
-        </div>
+    <div class="suggestion">
+        {% for url in infobox.urls %}
+        <p><a href="{{ url.url }}" rel="noreferrer">{{ url.title }}</a></p>
         {% endfor %}
     </div>
     {% endif %}
-    <br/>
 </div>
+
+{% if infobox.relatedTopics %}
+    <div class="infobox">
+        {% for topic in infobox.relatedTopics %}
+            <div class="suggestions-title">{{ topic.name }}</div>
+            {% for suggestion in topic.suggestions %}
+                <div class="suggestion">
+                    <form method="{{ method or 'POST' }}" action="{{ url_for('index') }}">
+                        <input type="hidden" name="q" value="{{ suggestion }}">
+                        <input type="submit" value="{{ suggestion }}" />
+                    </form>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+{% endif %}
