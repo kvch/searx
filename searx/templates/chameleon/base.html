@@ -8,7 +8,7 @@
         <meta name="referrer" content="no-referrer">
         <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=1" />
         <title>{% block title %}{% endblock %}searx</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/milligram/dist/milligram.css') }}" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/milligram.min.css') }}" type="text/css" media="screen"/>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css" media="screen" />
         <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}?v=2" />
         {% block styles %}
@@ -52,11 +52,6 @@
                 </script>
                 <script src="{{ url_for('static', filename='js/searx.js') }}" ></script>
             </section>
-            <div id="footer" class="footer">
-                <section class="container">
-            <p class="text-muted">{{ _('powered by') }} <a href="https://github.com/asciimoo/searx">searx</a> - {{ searx_version }} - {{ _('a privacy-respecting, hackable metasearch engine') }}</p>
-                </section>
-            </footer>
         </main>
     </body>
 </html>
