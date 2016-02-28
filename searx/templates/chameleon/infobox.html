@@ -1,7 +1,6 @@
 <div class="infobox">
     <div class="suggestions-title">{{ infobox.infobox }}</div>
     {% if infobox.img_src %}<img src="{{ image_proxify(infobox.img_src) }}" title="{{ infobox.infobox|striptags }}" alt="{{ infobox.infobox|striptags }}" />{% endif %}
-    <p>{{ infobox.entity }}</p>
     <p>{{ infobox.content | safe }}</p>
     {% if infobox.attributes %}
         <table>
@@ -12,11 +11,12 @@
     {% endif %}
 
     {% if infobox.urls %}
-    <div class="suggestion">
+        <div class="links">
         {% for url in infobox.urls %}
-        <p><a href="{{ url.url }}" rel="noreferrer">{{ url.title }}</a></p>
+        <div class="link"><a href="{{ url.url }}" rel="noreferrer">{{ url.title }}</a></div>
         {% endfor %}
-    </div>
+        </div>
+        <p></p>
     {% endif %}
 </div>
 

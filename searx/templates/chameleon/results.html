@@ -2,79 +2,53 @@
 {% block title %}{{ q }} - {% endblock %}
 {% block meta %}<link rel="alternate" type="application/rss+xml" title="Searx search: {{ q }}" href="{{ url_for('index') }}?q={{ q|urlencode }}&amp;format=rss&amp;{% for category in selected_categories %}category_{{ category }}=1&amp;{% endfor %}pageno={{ pageno }}">{% endblock %}
 {% block content %}
-<div class="small search center">
-    {% include 'chameleon/search.html' %}
-</div>
-<div class="results">
-    <div id="sidebar">
-        <div class="infobox">
-            <div class="suggestions-title">{{ _('Search URL') }}</div>
-            <div class="suggestion">
-                <input type="text" value="{{ base_url }}?q={{ q|urlencode }}{% if selected_categories %}&amp;categories={{ selected_categories|join(",") | replace(' ','+') }}{% endif %}{% if pageno > 1 %}&amp;pageno={{ pageno }}{% endif %}" readonly />
-            </div>
-        </div>
-        <div class="infobox">
-            <div class="suggestions-title">
-                {{ _('Download results') }}
-            </div>
-            {% for output_type in ('csv', 'json', 'rss') %}
-                <div class="suggestion">
-                    <form method="{{ method or 'POST' }}" action="{{ url_for('index') }}">
-                        <div class="left">
-                            <input type="hidden" name="q" value="{{ q }}" />
-                            <input type="hidden" name="format" value="{{ output_type }}" />
-                            {% for category in selected_categories %}
-                                <input type="hidden" name="category_{{ category }}" value="1"/>
-                            {% endfor %}
-                            <input type="hidden" name="pageno" value="{{ pageno }}" />
-                            <input type="submit" value="{{ output_type }}" />
-                        </div>
-                    </form>
-                </div>
-            {% endfor %}
-        </div>
 
-        {% if answers %}
-        <div class="infobox">
-            <div class="answers"><span>{{ _('Answers') }}</span>
-                {% for answer in answers %}
-                <span>{{ answer }}</span>
-                {% endfor %}
-            </div>
-        </div>
-        {% endif %}
+{% include 'chameleon/search.html' %}
 
-        {% if suggestions %}
-        <div class="infobox">
-            <div class="suggestions-title">{{ _('Suggestions') }}</div>
-            {% set first = true %}
-            {% for suggestion in suggestions %}
-            <div class="suggestion">
-                <form method="{{ method or 'POST' }}" action="{{ url_for('index') }}">
-                    <input type="hidden" name="q" value="{{ suggestion }}">
-                    <input type="submit" value="{{ suggestion }}" />
-                </form>
-            </div>
-            {% set first = false %}
-            {% endfor %}
-        </div>
-        {% endif %}
-
-        {% if infoboxes %}
-          {% for infobox in infoboxes %}
-             {% include 'chameleon/infobox.html' %}
-          {% endfor %}
-        {% endif %}
-    </div>
-</div>
-
-{% for result in results %}
-    {% if result['template'] %}
-        {% include get_result_template('chameleon', result['template']) %}
-    {% else %}
-        {% include 'chameleon/result_templates/default.html' %}
+<div id="sidebar">
+    {% if infoboxes %}
+      {% for infobox in infoboxes %}
+         {% include 'chameleon/infobox.html' %}
+      {% endfor %}
     {% endif %}
-{% endfor %}
+
+    {% if answers %}
+    <div class="infobox">
+        <div class="answers"><span>{{ _('Answers') }}</span>
+            {% for answer in answers %}
+            <span>{{ answer }}</span>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    {% if suggestions %}
+    <div class="infobox">
+        <div class="suggestions-title">{{ _('Suggestions') }}</div>
+        {% set first = true %}
+        {% for suggestion in suggestions %}
+        <div class="suggestion">
+            <form method="{{ method or 'POST' }}" action="{{ url_for('index') }}">
+                <input type="hidden" name="q" value="{{ suggestion }}">
+                <input type="submit" value="{{ suggestion }}" />
+            </form>
+        </div>
+        {% set first = false %}
+        {% endfor %}
+    </div>
+    {% endif %}
+
+</div>
+
+<div class="results">
+    {% for result in results %}
+        {% if result['template'] %}
+            {% include get_result_template('chameleon', result['template']) %}
+        {% else %}
+            {% include 'chameleon/result_templates/default.html' %}
+        {% endif %}
+    {% endfor %}
+</div>
 
 {% if paging %}
     <div id="pagination">
@@ -104,5 +78,24 @@
     </div>
 {% endif %}
 
+</div>
+
+<div class="url-info">
+    <div class="search-url">
+        <input type="text" value="{{ base_url }}?q={{ q|urlencode }}{% if selected_categories %}&amp;categories={{ selected_categories|join(",") | replace(' ','+') }}{% endif %}{% if pageno > 1 %}&amp;pageno={{ pageno }}{% endif %}" readonly />
+    </div>
+    {% for output_type in ('csv', 'json', 'rss') %}
+        <div class="search-url">
+            <form method="{{ method or 'POST' }}" action="{{ url_for('index') }}">
+                <input type="hidden" name="q" value="{{ q }}" />
+                <input type="hidden" name="format" value="{{ output_type }}" />
+                {% for category in selected_categories %}
+                    <input type="hidden" name="category_{{ category }}" value="1"/>
+                {% endfor %}
+                <input type="hidden" name="pageno" value="{{ pageno }}" />
+                <input type="submit"class="button button-outline"  value="{{ output_type }}" />
+            </form>
+        </div>
+    {% endfor %}
 </div>
 {% endblock %}

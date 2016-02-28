@@ -1,8 +1,8 @@
-<form method="{{ method or 'POST' }}" action="{{ url_for('index') }}" id="search_form">
+<form method="{{ method or 'POST' }}" action="{{ url_for('index') }}">
     <div class="search-wrapper">
-        <input type="text" placeholder="{{ _('Search for...') }}" id="q" class="search-box" name="q" tabindex="1" autocomplete="off" size="100" {% if q %}value="{{ q }}"{% endif %}/>
+        <input type="text" placeholder="{{ _('Search for...') }}" class="search-box" name="q" autocomplete="off" {% if q %}value="{{ q }}"{% endif %}/>
         <button type="reset" class="clear-search">X</button>
-        <button type="submit" class="submit-search">Search</button>
+        <button type="submit" class="submit-search"></button>
     </div>
-    {% include 'chameleon/categories.html' %}
+        {% include 'chameleon/categories.html' %}
 </form>
