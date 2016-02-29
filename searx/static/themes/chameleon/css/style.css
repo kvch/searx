@@ -4,7 +4,8 @@ body {
 }
 
 hr {
-    border: dotted #505050 1px;
+    border: solid #151515 1px;
+    margin: 0.1em 0;
 }
 
 .navigation {
@@ -19,7 +20,7 @@ hr {
 
 .navigation .container {
 	padding-top: 0;
-	padding-bottom: 0;
+	padding-bottom: 4.2em;
 }
 
 .navigation {
@@ -33,7 +34,6 @@ hr {
 .navigation-list {
 	list-style: none;
 	margin-bottom: 0;
-	margin-right: 5.0rem;
 }
 
 .navigation-item {
@@ -67,63 +67,10 @@ hr {
 	color: #2222ff;
 }
 
-.popover.popover-open {
-    display: block;
-}
-
-.popover {
-    background-color: #303030;
-    border: 0.1rem solid #202020;
-    border-radius: 0.5rem;
-    display:none;
-    left:50%;
-    position:absolute;
-    top:97%;
-    opacity:0;
-}
-
-.popover:hover #popover-list {
-    opacity:1;
-}
-
-.popover-list {
-    padding:0;
-    margin:0;
-    list-style:none;
-}
-
-.popover-item {
-    padding:1.0rem;
-    border: 0.1rem solid #202020;
-    margin:0;
-    text-align:center;
-}
-
-.popover-item:first-child .popover-link:after {
-	border-color: transparent;
-	border-bottom-color: #fff;
-	border-width: 1.0rem;
-	margin-left: -1.0rem;
-}
-.popover-item:first-child .popover-link:before {
-	border-color: rgba(238, 238, 238, 0);
-	border-bottom-color: #d1d1d1;
-	border-width: 1.1rem;
-	margin-left: -1.1rem;
-}
-
-.popover-item:first-child .popover-link {
-	border-radius: .4rem .4rem 0 0;
-}
-.popover-item:last-child .popover-link {
-	border-radius: 0 0 .4rem .4rem;
-	border-bottom-width: 0;
-}
-
 .container {
-	padding-top: 5.5rem;
-	padding-bottom: 2.5rem;
-	max-width: 80.0rem;
+	padding-top:5.5rem;
+	padding-bottom:3em;
+	max-width: 100.0rem;
 }
 
 .title {
@@ -226,7 +173,7 @@ select:focus {
     display:none;
 }
 
-/* results */
+//* results */
 
 .results {
     width:65%;
@@ -253,13 +200,13 @@ select:focus {
 
 .result-engines {
     position:absolute;
-    right:79.0rem;
+    right:98.5rem;
     text-align:right;
 }
 
 .result-engine {
     color: #303030;
-    font-size: 0.6em;
+    font-size: 0.65em;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     margin:0.5em;
@@ -352,9 +299,8 @@ select:focus {
 .container #sidebar {
     padding:1.0rem;
     border-radius:0.8em;
-    position:absolute;
-    top:15.0rem; bottom:0; right:0;
-    width:35%;
+    float:right;
+    width:30%;
 }
 
 #sidebar .infobox {
@@ -372,8 +318,7 @@ select:focus {
 .container .pref-content {
     position:absolute;
     top:3.0em; bottom:0; right:0;
-    width:70%;
-    padding-left:0.5rem;
+    width:75%;
 }
 
 .image-result {
@@ -611,6 +556,7 @@ select:focus {
 }
 
 .url-info {
+    opacity:0;
     text-align:center;
     width:100%;
     position:fixed;
@@ -618,7 +564,12 @@ select:focus {
     border: 1px solid #131313;
     bottom:0;
     left:0;
-    height:3em;
+    height:3.4em;
+}
+
+.url-info:hover,
+.url-info:focus {
+    opacity:1;
 }
 
 .search-url {

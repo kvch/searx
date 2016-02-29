@@ -24,17 +24,8 @@
                 <section class="container">
                     <a class="navigation-title" href="/"><h1 class="title">{{ instance_name }}</h1></a>
                         <ul class="navigation-list float-right">
-                            <li class="navigation-item"><a class="navigation-link" href="#about">{{ _('about') }}</a></li>
-                            <div id="about" class="popover popover-open">
-                                <ul class="popover-list">
-                                    <li class="popover-item">
-                                        <a class="popover-link" href="{{ url_for('about') }}">searx</a>
-                                    </li>
-                                    <li class="popover-item">
-                                        <a class="popover-link" href="{{ url_for('faq') }}">FAQ</a>
-                                    </li>
-                                </ul>
-                            </div>
+                            <li class="navigation-item"><a class="navigation-link" href="{{ url_for('about') }}">{{ _('about') }}</a></li>
+                            <li class="navigation-item"><a class="navigation-link" href="{{ url_for('faq') }}">{{ _('faq') }}</a></li>
                             <li class="navigation-item"><a class="navigation-link" href="{{ url_for('preferences') }}">{{ _('preferences') }}</a></li>
                         </ul>
                 </section>
