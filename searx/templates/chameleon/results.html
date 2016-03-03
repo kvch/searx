@@ -52,31 +52,34 @@
 </div>
 
 {% if paging %}
-    <div id="pagination">
-        {% if pageno > 1 %}
-            <form method="{{ method or 'POST' }}" action="{{ url_for('index') }}">
-                <div class="{% if rtl %}right{% else %}left{% endif %}">
-                <input type="hidden" name="q" value="{{ q }}" />
-                {% for category in selected_categories %}
-                    <input type="hidden" name="category_{{ category }}" value="1"/>
-                {% endfor %}
-                <input type="hidden" name="pageno" value="{{ pageno-1 }}" />
-                <input type="submit" value="<< {{ _('previous page') }}" />
+    <div class="pagination-wrapper">
+            {% if pageno > 1 %}
+                <div class="pagination">
+                    <form method="{{ method or 'POST' }}" action="{{ url_for('index') }}">
+                        <div class="{% if rtl %}right{% else %}left{% endif %}">
+                            <input type="hidden" name="q" value="{{ q }}" />
+                            {% for category in selected_categories %}
+                                <input type="hidden" name="category_{{ category }}" value="1"/>
+                            {% endfor %}
+                            <input type="hidden" name="pageno" value="{{ pageno-1 }}" />
+                            <input type="submit" value="<< {{ _('previous page') }}" />
+                        </div>
+                    </form>
                 </div>
-            </form>
-        {% endif %}
-        <form method="{{ method or 'POST' }}" action="{{ url_for('index') }}">
-            <div class="{% if rtl %}left{% else %}right{% endif %}">
-                {% for category in selected_categories %}
-                    <input type="hidden" name="category_{{ category }}" value="1"/>
-                {% endfor %}
-                <input type="hidden" name="q" value="{{ q }}" />
-                <input type="hidden" name="pageno" value="{{ pageno+1 }}" />
-                <input type="submit" value="{{ _('next page') }} >>" />
+            {% endif %}
+            <div class="pagination">
+                <form method="{{ method or 'POST' }}" action="{{ url_for('index') }}">
+                    <div class="{% if rtl %}left{% else %}right{% endif %}">
+                        {% for category in selected_categories %}
+                            <input type="hidden" name="category_{{ category }}" value="1"/>
+                        {% endfor %}
+                        <input type="hidden" name="q" value="{{ q }}" />
+                        <input type="hidden" name="pageno" value="{{ pageno+1 }}" />
+                        <input type="submit" value="{{ _('next page') }} >>" />
+                    </div>
+                </form>
             </div>
-        </form>
-        <br />
-    </div>
+        </div>
 {% endif %}
 
 </div>

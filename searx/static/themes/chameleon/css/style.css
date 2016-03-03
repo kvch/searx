@@ -586,3 +586,13 @@ input[type='submit'].button-outline {
     border-color: #555555;
     width:17em;
 }
+
+.pagination-wrapper {
+    margin-top:2.0em;
+    width:100%;
+    text-align:center;
+}
+
+.pagination {
+    display:inline-block;
+}
