@@ -16,7 +16,7 @@ server:
 
 ui:
     themes_path : ""
-    default_theme : legacy
+    default_theme : oscar
     default_locale : ""
 
 outgoing:

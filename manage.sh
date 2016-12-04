@@ -36,7 +36,7 @@ py_test_coverage() {
 
 robot_tests() {
     echo '[!] Running robot tests'
-    PYTHONPATH=`pwd` python "$SEARX_DIR/testing.py" robot
+    PYTHONPATH=`pwd` python3 -m pytest "$SEARX_DIR/test_robot.py"
 }
 
 tests() {
