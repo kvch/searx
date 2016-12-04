@@ -45,7 +45,6 @@ class SearxRobotLayer(Layer):
         )
         exe = 'python'
 
-        # set robot settings path
         os.environ['SEARX_SETTINGS_PATH'] = abspath(
             dirname(__file__) + '/settings_robot.yml')
 
