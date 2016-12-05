@@ -5,7 +5,9 @@ import pytest
 import os
 import subprocess
 
-PYTHON_EXECUTABLES =  ['python2.7', 'python3']
+
+PYTHON_EXECUTABLES = ['python2.7', 'python3']
+
 
 def start_searx(python_exe):
     os.setpgrp()
