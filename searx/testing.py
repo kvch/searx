@@ -61,9 +61,6 @@ class SearxRobotLayer(Layer):
         del os.environ['SEARX_SETTINGS_PATH']
 
 
-#SEARXROBOTLAYER = SearxRobotLayer()
-
-
 class SearxTestCase(TestCase):
     """Base test case for non-robot tests."""
 
