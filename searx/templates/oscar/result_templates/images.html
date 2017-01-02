@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="row">
-                <a href="{{ result.url }}" class="btn btn-default">
+                <a href="{{ result.url }}" class="btn btn-default" {% if results_on_new_tab %}target="_blank" rel="noopener noreferrer"{% else %}rel="noreferrer"{% endif %}>
                     {{ _('View source') }}
                 </a>
             </div>
