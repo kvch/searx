@@ -55,6 +55,10 @@
 <body>
     {% include 'oscar/navbar.html' %}
     <div class="container">
+    <div class="alert alert-warning fade in" role="alert">
+        <strong class="lead">{{ icon('info-sign') }} {{ _('Warning!') }}</strong>
+        Please note that currently the new Python3 branch is deployed on this instance. If you experience anyproblem, open an issue <a href="https://github.com/asciimoo/searx/issues">here</a>.
+    </div>
     {% if errors %}
         <div class="alert alert-danger fade in" role="alert">
             <button class="close" data-dismiss="alert" type="button">
