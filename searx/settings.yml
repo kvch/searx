@@ -258,6 +258,17 @@ engines:
     engine : github
     shortcut : gh
 
+  - name : good reads
+    engine : xpath
+    search_url : https://goodreads.com/search?query={query}
+    url_xpath : //a[@class="bookTitle"]/@href
+    title_xpath : //a[@class="bookTitle"]/span/text()
+    content_xpath : //a[@class="authorName"][1]/span[@itemprop="name"]/text()
+    shortcut : gr
+    timeout : 5.0
+    categories : books
+    disabled : True
+
   - name : google
     engine : google
     shortcut : go
