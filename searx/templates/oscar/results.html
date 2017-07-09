@@ -36,6 +36,10 @@
             {% endfor %}
             {% endif %}
 
+            {% if unresponsive_engines and results|length >= 1 %}
+            <p><small>{{ _('Engines not responding:') }} {{  unresponsive_engines|join(', ') }}</small></p>
+            {% endif %}
+
             {% for result in results %}
             <div class="result {% if result['template'] %}result-{{ result.template|replace('.html', '') }}{% else %}result-default{% endif %}">
                 {% set index = loop.index %}

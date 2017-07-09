@@ -176,6 +176,7 @@ def search_multiple_requests(requests, result_container, start_time, timeout_lim
             th.join(remaining_time)
             if th.isAlive():
                 logger.warning('engine timeout: {0}'.format(th._engine_name))
+                result_container.add_unresponsive_engine(th._engine_name)
 
 
 # get default reqest parameter
