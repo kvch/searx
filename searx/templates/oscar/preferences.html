@@ -125,7 +125,7 @@
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs nav-justified hide_if_nojs" role="tablist" style="margin-bottom:20px;">
                     {% for categ in all_categories %}
-                    <li{% if loop.first %} class="active"{% endif %}><a href="#tab_engine_{{ categ|replace(' ', '_') }}" role="tab" data-toggle="tab">{{ _(categ) }}</a></li>
+                    <li{% if loop.first %} class="active"{% endif %}><a href="#tab_engine_{{ categ|replace(' ', '_') }}" role="tab" data-toggle="tab" class="categories-tab">{{ _(categ) }}</a></li>
                     {% endfor %}
                 </ul>
 
