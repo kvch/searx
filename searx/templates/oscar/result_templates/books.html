@@ -1,0 +1,14 @@
+{% from 'oscar/macros.html' import result_header, result_sub_header, result_footer, result_footer_rtl %}
+
+{% if result.thumbnail %}
+<img class="thumbnail col-xs-1 col-sm-1 col-md-1" src="{{ image_proxify(result.thumbnail) }}" alt="{{ result.title|striptags }} {{ result.engine }}" />
+{% endif %}
+
+{{ result_header(result, favicons) }}
+{{ result_sub_header(result) }}
+{% if result.content %}<p class="result-content">{{ result.content|safe }}</p>{% endif %}
+{% if rtl %}
+{{ result_footer_rtl(result) }}
+{% else %}
+{{ result_footer(result) }}
+{% endif %}
