@@ -268,6 +268,10 @@ engines:
     engine : google
     shortcut : go
 
+  - name : google books
+    engine : google_books
+    shortcut : goi
+
   - name : google images
     engine : google_images
     shortcut : goi
