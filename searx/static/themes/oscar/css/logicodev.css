@@ -149,7 +149,7 @@ input[type=checkbox]:not(:checked) + .label_hide_if_checked + .label_hide_if_not
   float: right;
 }
 .external-link {
-  color: #069025;
+  color: #068922;
   font-size: 12px;
   margin-bottom: 15px;
 }
@@ -239,7 +239,7 @@ input[type=checkbox]:not(:checked) + .label_hide_if_checked + .label_hide_if_not
   padding-bottom: 60px;
 }
 .label-default {
-  color: #a4a4a4;
+  color: #666666;
   background: transparent;
 }
 .result .text-muted small {
@@ -273,7 +273,7 @@ input[type=checkbox]:not(:checked) + .label_hide_if_checked + .label_hide_if_not
   font-style: italic;
 }
 .infobox .btn {
-  background-color: #2ecc71;
+  background-color: #007ab8;
   border: none;
 }
 .infobox .btn a {
